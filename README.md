@@ -49,10 +49,10 @@
 * `SELECT * FROM Tabela WHERE Coluna IN (2,7,13);`
 
 ## Like (Encontrar algo)
-* **Like '%to': Procurar algo que no final, termine com to**
-* **Like 'to%': Procurar algo que no inicio, comece com to**
-* **Like '%to%': Procurar algo que no meio, contenha to**
-* **Like '%to_': Com o Underline, só irá aparecer um caractere depos de to**
+ **Like '%to': Procurar algo que no final, termine com to**
+ **Like 'to%': Procurar algo que no inicio, comece com to**
+ **Like '%to%': Procurar algo que no meio, contenha to**
+ **Like '%to_': Com o Underline, só irá aparecer um caractere depos de to**
 * `SELECT * FROM Tabela WHERE Coluna LIKE '%essa%';`
 
 
