@@ -19,7 +19,10 @@
 * `SELECT * FROM Produtos WHERE PreçoProduto <= 50;`
 * `SELECT * FROM Produtos WHERE PreçoProduto >= 25 AND PreçoProduto <= 50;`
 * `SELECT * FROM Produtos WHERE EscalaProduto <> '1:10';`
-* `SELECT FROM Produtos WHERE Quantidade >= 500 AND Quantidade <= 700;`
+* `SELECT * FROM Produtos WHERE Quantidade >= 500 AND Quantidade <= 700;` <br><br>
+* **= : Igual**
+* **>, <, >=, <= : Maior, Menor, Maior ou Igual, Menor ou Igual**
+* **<> Diferente**
 
 ## Count (Contagem)
 
@@ -31,10 +34,11 @@
 * **Selecionar dados com um limite:** `SELECT * FROM Produtos LIMIT 10;`
 
 ## Order by (Ordenar dados)
-* `SELECT * FROM Pessoas ORDER BY PrimeiroNome ASC (ASC = CRESCENTE, DESC = DECRESCENTE)`
+* **ASC: CRESCENTE, DESC: DECRESCENTE**
+* `SELECT * FROM Pessoas ORDER BY PrimeiroNome ASC;`
 * `SELECT * FROM Pessoas ORDER BY PrimeiroNome ASC, Sobrenome DESC;`
 * `SELECT ProdutoID, Preço FROM Produto ORDER BY Preço DESC LIMIT 10;`
-select ProductID, ListPrice from product order by ListPrice desc limit 10;
+
 
 
 
