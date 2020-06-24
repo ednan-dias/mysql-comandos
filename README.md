@@ -6,13 +6,17 @@
 * **Criar banco de dados:** `CREATE DATABASE Banco;`
 * **Deletar banco de dados:** `DROP DATABASE Banco;`
 
-## Select (Selecionar dados)
+## Select 
+
+*O comando SELECT permite recuperar os dados de um objeto do banco de dados, como uma tabela, view.*
 
 * **Selecionar todas as colunas de uma tabela**: `SELECT * FROM Pessoas;`
 * **Selecionar uma ou mais colunas de uma tabela:** `SELECT Nome, Idade FROM Pesoas;`
 * **Select com Distinc, (Selecionar dados únicos, omitindo os outros):** `SELECT DISTINCT Nome FROM Pessoas;`
 
 ## Where (Selecionar com condições)
+
+*A cláusula Where permite ao comando SQL passar condições de filtragem.*
 * **= : Igual**
 * **>, <, >=, <= : Maior, Menor, Maior ou Igual, Menor ou Igual**
 * **<> Diferente**
@@ -67,3 +71,12 @@
 * `SELECT Nome, COUNT(Nome) AS "Contagem" from "Pessoas" GROUP BY Nome;`
 * `SELECT Cor, AVG(Preço) AS "Contagem" FROM Produto WHERE Cor = 'Cinza' GROUP BY Color`
 
+## Having ('Where' de dados agrupados)
+* `SELECT Nome, COUNT(Nome) AS 'Quantidade' FROM Pessoas GROUP BY Nome HAVING COUNT(Nome) > 10;`
+* `SELECT ProdutoID, SUM(Total) AS 'Total' FROM Produtos GROUP BY ProdutoID HAVING SUM(Total) BETWEEN 162000 AND 500000;`
+
+## As (Renomear colunas)
+* `SELECT SUM(Preço) AS "Preço Médio" FROM Produtos LIMIT 10;`
+
+
+## Inner Join
