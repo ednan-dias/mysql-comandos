@@ -21,7 +21,9 @@
 
 * *= : Igual*
 * *>, <, >=, <= : Maior, Menor, Maior ou Igual, Menor ou Igual*
-* *<> Diferente*
+* *<>: Diferente*
+* *AND: Operador Lógico E*
+* *OR: Operador Lógico OU*
 
 * *Selecionar dados com condições:* `SELECT * FROM Pessoas WHERE Nome = 'Ednan' AND Sobrenome = 'Dias';`
 * `SELECT * FROM Produto WHERE Escala = '1:18' OR Escala = '1:10';`
