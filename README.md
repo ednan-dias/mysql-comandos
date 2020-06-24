@@ -113,3 +113,14 @@
 
 
 ## Inner Join
+* **A cláusula INNER JOIN permite usar um operador de comparação para comparar os valores de colunas provenientes de tabelas associadas.**
+
+* *Inner Join, Outer Join, Self-Join*
+
+* `SELECT S.ProdutoID, S.NumeroCarreira, P.Nome FROM Vendas as S INNER JOIN Produto as P on S.ProdutoID = P.ProdutoID;`
+
+* `SELECT P.Preço, P.Nome, PS.Nome as 'Nome Subcategoria' FROM Produtos as P INNER JOIN ProdutoSubcategoria AS PS ON P.ProdutoSubcategoriaID = PS.ProdutoSubcategoriaID;`
+
+* `SELECT E.Endereço, E.Cidade, ES.Nome FROM Endereço AS E INNER JOIN Estado AS ES ON E.EstadoID = ES.EstadoID;`
+
+
