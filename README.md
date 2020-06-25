@@ -125,4 +125,19 @@
 
 * `SELECT E.Endereço, E.Cidade, ES.Nome FROM Endereço AS E INNER JOIN Estado AS ES ON E.EstadoID = ES.EstadoID;`
 
+## Tipos de Joins
+* **Inner Join: retorna apenas os resultados que correspondem (existem) tanto na tabela A como na tabela B**
+* **Full Outer Join: retorna um conjunto de todos os registros correspondentes na tabela A e tabela B quando são iguais. E além disso se não houver valores correspondentes, ele simplesmente irá preencher esse lado com 'Null'**
+* **Left Outer Join: retorna um conjunto de todos os registros da tabela A, e além disso, os registros correspondentes (quando disponíveis) na tabela B. Se não houver registros correspondentes ele simplemente vai preencher com 'Null'**
+
+* `SELECT * FROM Contato AS C LEFT JOIN ContatoCartao AS CC ON C.ContatoID = CC.ContadoID WHERE CC.ContadoID IS NULL;`
+
+## Union
+* **O operador Union combina dois ou mais resultados de um select em um resultado apenas.**
+* 
+~~~sql
+SELECT ProdutoID, Nome, Numero FROM Produto WHERE Nome LIKE '%Chain%'
+UNION
+SELECT ProdutoID, Nome, Numero FROM Produto WHERE Nome LIKE '%Decal%';     
+~~~
 
