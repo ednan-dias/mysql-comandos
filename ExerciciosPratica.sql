@@ -78,6 +78,10 @@ on E.ContactID = C.ContactID;
 select A.AddressID, A.City, S.StateProvinceID, S.Name from address as A 
 inner join stateprovince as S on A.StateProvinceID = S.StateProvinceID;
 
+# Union
+select FirstName from contact where FirstName = 'Samuel'
+union
+select FirstName from contact where FirstName like 'S%';
 
 
 

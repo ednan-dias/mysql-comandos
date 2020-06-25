@@ -87,6 +87,7 @@
 
 **Usados geralmente para valores númericos.**
 
+* *Sum: Soma, Min: Valor Mínimo*
 * *Sum: Soma:* `SELECT SUM(Total) AS "Contagem" FROM Produto LIMIT 10;`
 * *Min: Valor Mínimo:* `SELECT MIN(Total) AS "Contagem" FROM Produto LIMIT 10;`
 * *Max: Valor Máximo:* `SELECT MAX(Total) AS "Contagem" FROM Produto LIMIT 10;`
@@ -96,22 +97,37 @@
 
 **A cláusula GROUP BY agrupa linhas baseado em semelhanças entre elas.**
 
-* `SELECT Cor, COUNT(Cor) AS "Contagem" FROM Produto GROUP BY Cor;`
-* `SELECT Nome, COUNT(Nome) AS "Contagem" from "Pessoas" GROUP BY Nome;`
-* `SELECT Cor, AVG(Preço) AS "Contagem" FROM Produto WHERE Cor = 'Cinza' GROUP BY Color`
+~~~sql
+SELECT Cor, COUNT(Cor) AS "Contagem" 
+FROM Produto GROUP BY Cor;
+
+SELECT Nome, COUNT(Nome) AS "Contagem" 
+FROM "Pessoas" GROUP BY Nome;
+
+SELECT Cor, AVG(Preço) AS "Contagem"
+FROM Produto WHERE Cor = 'Cinza' GROUP BY Color;
+~~~
 
 ## Having 
 
 **A cláusula WHERE é utilizada no "modo de linha" para filtrar linhas (restrição horizontal). A cláusula HAVING tem funções semelhantes no "modo de grupo": serve para filtrar grupos quando o query possui um GROUP BY.**
 
-* `SELECT Nome, COUNT(Nome) AS 'Quantidade' FROM Pessoas GROUP BY Nome HAVING COUNT(Nome) > 10;`
-* `SELECT ProdutoID, SUM(Total) AS 'Total' FROM Produtos GROUP BY ProdutoID HAVING SUM(Total) BETWEEN 162000 AND 500000;`
+~~~sql
+SELECT Nome, COUNT(Nome) AS 'Quantidade'
+FROM Pessoas GROUP BY Nome HAVING COUNT(Nome) > 10;
+
+SELECT ProdutoID, SUM(Total) AS 'Total' 
+FROM Produtos GROUP BY ProdutoID 
+HAVING SUM(Total) BETWEEN 162000 AND 500000;
+~~~
 
 ## As 
 
 **Serve para renomear colunas, geralmente sem nomes definidos.**
 
-* `SELECT SUM(Preço) AS "Preço Médio" FROM Produtos LIMIT 10;`
+~~~sql
+SELECT SUM(Preço) AS "Preço Médio" FROM Produtos LIMIT 10;
+~~~
 
 
 ## Inner Join
@@ -119,25 +135,33 @@
 
 * *Inner Join, Outer Join, Self-Join*
 
-* `SELECT S.ProdutoID, S.NumeroCarreira, P.Nome FROM Vendas as S INNER JOIN Produto as P on S.ProdutoID = P.ProdutoID;`
+~~~sql 
+SELECT S.ProdutoID, S.NumeroCarreira, P.Nome FROM Vendas as S INNER JOIN Produto as P on S.ProdutoID = P.ProdutoID;
 
-* `SELECT P.Preço, P.Nome, PS.Nome as 'Nome Subcategoria' FROM Produtos as P INNER JOIN ProdutoSubcategoria AS PS ON P.ProdutoSubcategoriaID = PS.ProdutoSubcategoriaID;`
+SELECT P.Preço, P.Nome, PS.Nome as 'Nome Subcategoria' FROM Produtos as P INNER JOIN ProdutoSubcategoria AS PS ON P.ProdutoSubcategoriaID = PS.ProdutoSubcategoriaID;
 
-* `SELECT E.Endereço, E.Cidade, ES.Nome FROM Endereço AS E INNER JOIN Estado AS ES ON E.EstadoID = ES.EstadoID;`
+SELECT E.Endereço, E.Cidade, ES.Nome FROM Endereço AS E INNER JOIN Estado AS ES ON E.EstadoID = ES.EstadoID;
+~~~
 
 ## Tipos de Joins
 * **Inner Join: retorna apenas os resultados que correspondem (existem) tanto na tabela A como na tabela B**
 * **Full Outer Join: retorna um conjunto de todos os registros correspondentes na tabela A e tabela B quando são iguais. E além disso se não houver valores correspondentes, ele simplesmente irá preencher esse lado com 'Null'**
 * **Left Outer Join: retorna um conjunto de todos os registros da tabela A, e além disso, os registros correspondentes (quando disponíveis) na tabela B. Se não houver registros correspondentes ele simplemente vai preencher com 'Null'**
 
-* `SELECT * FROM Contato AS C LEFT JOIN ContatoCartao AS CC ON C.ContatoID = CC.ContadoID WHERE CC.ContadoID IS NULL;`
+~~~sql
+SELECT * FROM Contato AS C 
+LEFT JOIN ContatoCartao AS CC
+ON C.ContatoID = CC.ContadoID
+WHERE CC.ContadoID IS NULL;
+~~~
 
 ## Union
 * **O operador Union combina dois ou mais resultados de um select em um resultado apenas.**
-* 
 ~~~sql
-SELECT ProdutoID, Nome, Numero FROM Produto WHERE Nome LIKE '%Chain%'
+SELECT ProdutoID, Nome, Numero 
+FROM Produto WHERE Nome LIKE '%Chain%'
 UNION
-SELECT ProdutoID, Nome, Numero FROM Produto WHERE Nome LIKE '%Decal%';     
+SELECT ProdutoID, Nome, Numero 
+FROM Produto WHERE Nome LIKE '%Decal%';     
 ~~~
 
