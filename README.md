@@ -213,3 +213,152 @@ SELECT ProdutoID, Nome, Numero
 FROM Produto WHERE Nome LIKE '%Decal%';     
 ~~~
 
+## Datas
+* **Manipular datas**
+
+* *Selecionar mês:*
+~~~sql
+    SELECT VendaID, MONTH(Data) FROM OrdemDeVendas;
+~~~
+
+* *Selecionar nome do mês:*
+~~~sql
+    SELECT VendaID, MONTHNAME(Data) FROM OrdemDeVendas;
+~~~
+
+* *Selecionar dia:*
+~~~sql
+    SELECT VendaID, DAY(Data) FROM OrdemDeVendas;
+~~~
+
+* *Selecionar nome do dia:*
+~~~sql
+    SELECT VendaID, DAYNAME(Data) FROM OrdemDeVendas;
+~~~
+
+* *Selecionar ano:*
+~~~sql
+    SELECT VendaID, YEAR(Data) FROM OrdemDeVendas;
+~~~
+
+* **Exemplo (extrair média de vendas de cada dia):**
+~~~sql
+    SELECT AVG(Total) AS Média, DAY(Data) AS Mês
+    FROM OrdemDeVendas
+    GROUP BY DAY(Data)
+    ORDER BY Mês ASC;
+~~~
+
+## Manipulação de String
+* **Manipular string**
+
+* *Concatenar strings:*
+~~~sql
+    SELECT CONCAT(Nome,' ',Sobrenome) AS Nome
+    FROM Pessoas;
+~~~
+
+* *Deixar tudo em maiusculo:*
+~~~sql
+    SELECT UPPER(Nome) FROM Pessoas;
+~~~
+
+* *Deixar tudo em minusculo:*
+~~~sql
+    SELECT LOWER(Nome) FROM Pessoas;
+~~~
+
+* *Contar caracteres:*
+~~~sql
+    SELECT LENGTH(Nome) FROM Pessoas;
+~~~
+
+* *Substring, selecionar partes:*
+~~~sql
+    SELECT Nome, SUBSTR(Nome,1,3) FROM Pessoas;
+
+    SELECT Nome, SUBSTR(Coluna, Índice inicial, Pegar quantas casas depois do índice inicial)
+    FROM Tabela;
+~~~
+
+* *Replace, substituir:*
+~~~sql
+    SELECT NumeroProduto, REPLACE(NumeroProduto,'-','#') FROM Pessoas;
+
+    SELECT REPLACE(Coluna,'Caractere que vai ser substituído','Caractere que vai substituir')
+    FROM Tabela;
+~~~
+
+## Funções Matemáticas
+
+* *Soma:*
+~~~sql
+    SELECT Preço + Total AS Soma FROM Vendas;
+~~~
+
+* *Subtração:*
+~~~sql
+    SELECT Preço - Total AS Soma FROM Vendas;
+~~~
+
+* *Divisão:*
+~~~sql
+    SELECT Preço / Total AS Soma FROM Vendas;
+~~~
+
+* *Multiplicação:*
+~~~sql
+    SELECT Preço * Total AS Soma FROM Vendas;
+~~~
+
+* *Arredondamento:*
+~~~sql
+    SELECT ROUND(Total,2) FROM Vendas;
+
+    SELECT ROUND(Coluna,Casas depois da vírgula) 
+    FROM Tabela;
+~~~
+
+* *Raíz Quadrada:*
+~~~sql
+    SELECT SQRT(Total) FROM Vendas;
+~~~
+
+## SubSelect
+* **Dois selects em apenas um select**
+
+* *Para fazer o subselect coloque o segundo select em parentêses ()*
+
+~~~sql
+    SELECT * FROM Produto
+    WHERE Preço > (SELECT AVG(Preço) FROM Produto);
+~~~
+
+~~~sql
+    SELECT Nome FROM Pessoas
+    WHERE PessoaID IN (SELECT
+    PessoaID FROM Funcionários WHERE Função = 'Design Engineer');
+~~~
+
+## Self-Join
+* **Selecionar dados com um condição na MESMA tabela**
+
+~~~sql
+    SELECT A.Nome, A.Endereço, B.Nome, B.Endereço FROM
+    Pessoas A, Pessoas B WHERE A.Endereço = B.Endereço;
+~~~
+
+## Tipos de Dados
+
+1. Boleanos
+2. Caracteres
+3. Números
+4. Temporais
+
+* **Boleanos**
+* *Por padrão ele é iniciado como nulo, e pode receber tanto 1 como 0*
+
+
+
+
+

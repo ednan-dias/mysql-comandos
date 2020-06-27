@@ -83,10 +83,30 @@ select FirstName from contact where FirstName = 'Samuel'
 union
 select FirstName from contact where FirstName like 'S%';
 
+# Data
+select monthname(DueDate) as Dia, year(DueDate) as Mês from workorder;
+
+# String
+select concat(AddressLine1,' / ',City) from address;
+select City,length(City) from address;
+select lower(City) from address;
+select upper(City) from address;
+select substr(City,1,3) from address;
+select replace(City,'Bothell', 'Ednan') from address;
+
+# Funções Matemáticas
+select avg(round(UnitPrice,2)) as 'Média arredondada' from salesorderdetail;
+
+# SubSelect
+select * from address
+where StateProvinceID in (select StateProvinceID from
+stateprovince where Name = 'Alberta');
+
+# Self-Join
+select A.product_id, A.quantity, B.product_id, B.quantity from order_details A, order_details B
+where A.quantity = B.quantity;
 
 
-
- 
 
 
 
