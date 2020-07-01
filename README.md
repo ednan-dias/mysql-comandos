@@ -355,16 +355,46 @@ FROM Produto WHERE Nome LIKE '%Decal%';
 3. Números
 4. Temporais
 
-* **1. Boleanos**
-* *Por padrão ele é iniciado como nulo, e pode receber tanto 1 como 0.*
-* *Tinyint, boolean, bit*
+* ## 1. Boleanos
+*Por padrão ele é iniciado como nulo, e pode receber tanto 1 como 0.*
+*Tinyint, boolean, bit*
 
-* **2. Caracteres**
-* *Tamanho fixo - char // permite inserir até uma quantidade fixa de caracteres e sempre ocupa todo o espaço reservado.*
-* *tamanhos variáveis - varchar ou nvarchar // permite inserir até uma quantidade que for definida, porém só usa o espaço que for preenchido.*
+* ## 2. Caracteres
+*Tamanho fixo - char // permite inserir até uma quantidade fixa de caracteres e sempre ocupa todo o espaço reservado.*
+*tamanhos variáveis - varchar ou nvarchar // permite inserir até uma quantidade que for definida, porém só usa o espaço que for preenchido.*
 
-* **3. Números**
-* *Valores*
+* ## 3. Números
+**Valores exatos**
+
+* *1. TINYINT - não tem parte valor fracionados (ex: 1.43, 24.23)*
+* *2. SMALLINT - mesma coisa, porém limite maior*
+* *3. INT - mesma coisa, porém limite maior*
+* *4. BIGINT - mesma coisa, porém limite maior*
+* *5. NUMERIC ou DECIMAL - valores exatos, porém permite ter parte fracionados, que também pode ser especificado a precisão e escala (escala é o número de digitos na parte fracional) -ex: NUMERIC(5,2)*
+
+**Valores Aproximados**
+* *1. REAL - tem precisão aproximada de até 15 dígitos*
+* *2. FLOAT - mesmo conceito de REAL*
+
+## 4. Temporais
+* *1. DATE - armazena data no formato aaaa/mm/dd*
+* *2. DATETIME - armazena data e horas no formato aaaa/mm/dd:hh:mm:ss*
+* *3. DATETIME2 - armazena data e horas com adição de milisegundos no formato aaaa/mm/dd:hh:mm:ssssssss*
+* *4. SMALLDATETIME - data e hora respeitando o limite entre '1900-01-01:00:00:00' até '2079-06-06:23:59:59'.*
+* *5. TIME - horas,minutos, segundos e milisegundos respeitando o limite de '00:00:00.000000' até '23:59:59.999999'*
+* *6. DATETIMEOFFSET - permite armazenat informações de data e horas incluindo o fuso horário*
+
+## Create Table
+
+Principais tipos de restrições que podem ser aplicadas
+**NOT NULL:** Não permite nulos
+**UNIQUE:** Força que todos os valores em uma coluna sejam diferentes
+**PRIMARY KEY:** Uma junção de NOT NULL e UNIQUE
+**FOREIGN KEY:** Identifica únicamente uma linha em outra tabela
+**CHECK:** Força uma condição específica em uma coluna
+**DEFAULT:** Força um valor padrão quando nenhum valor é passado
+
+
 
 
 
