@@ -355,8 +355,16 @@ FROM Produto WHERE Nome LIKE '%Decal%';
 3. Números
 4. Temporais
 
-* **Boleanos**
-* *Por padrão ele é iniciado como nulo, e pode receber tanto 1 como 0*
+* **1. Boleanos**
+* *Por padrão ele é iniciado como nulo, e pode receber tanto 1 como 0.*
+* *Tinyint, boolean, bit*
+
+* **2. Caracteres**
+* *Tamanho fixo - char // permite inserir até uma quantidade fixa de caracteres e sempre ocupa todo o espaço reservado.*
+* *tamanhos variáveis - varchar ou nvarchar // permite inserir até uma quantidade que for definida, porém só usa o espaço que for preenchido.*
+
+* **3. Números**
+* *Valores*
 
 
 
