@@ -106,6 +106,86 @@ stateprovince where Name = 'Alberta');
 select A.product_id, A.quantity, B.product_id, B.quantity from order_details A, order_details B
 where A.quantity = B.quantity;
 
+# Create Table
+create table Pessoas (
+	PessoaID int primary key auto_increment,
+    nome varchar(150) not null,
+    idade int not null
+);
+
+create table Casa (
+	CasaID int primary key auto_increment,
+    nome varchar(150) not null,
+    endereco varchar(150) not null,
+    PessoaID int,
+    foreign key (PessoaID) references Pessoas(PessoaID)
+);
+
+# Insert Into
+create table teste(
+	testeID int primary key,
+    nome varchar(150) not null,
+    idade int not null
+);
+
+insert into teste(testeID,nome,idade) values (1,'Ednan',18);
+
+insert into teste(testeID,nome,idade) values (2,'Vera',41), (3,'Edimar',42), (4,'Danilo',13);
+
+create table teste2(
+	testeID int primary key auto_increment,
+    nome varchar(150) not null
+);
+
+insert into teste2(nome) values ('Ronaldo');
+
+insert into teste2 (nome) select nome from teste;
+
+# Update
+update casa set nome = 'Casa do Nan' where CasaID = 1;
+update casa set endereco = 'Rua Miguel Ruiz, 437' where CasaID = 1;
+
+# Alter Table
+select * from pessoas;
+
+create database cidadaos;
+
+create table pessoas (
+	pessoasID int primary key,
+	nome varchar(150) unique not null,
+    idade int not null
+);
+
+alter table pessoas modify column nome varchar(300) not null; 
+
+alter table pessoas change nome nomePessoa varchar(150) not null;
+
+rename table pessoas to pessoal;
+
+# Check Constraint
+
+create table Voto (
+	id int primary key auto_increment,
+    nome varchar(100) not null,
+    idade int check (idade >= 18)
+);
+
+insert into Voto(nome,idade) values ('Marcos', 19);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
