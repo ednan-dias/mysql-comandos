@@ -393,10 +393,138 @@ Principais tipos de restrições que podem ser aplicadas
 **FOREIGN KEY:** Identifica únicamente uma linha em outra tabela
 **CHECK:** Força uma condição específica em uma coluna
 **DEFAULT:** Força um valor padrão quando nenhum valor é passado
+**AUTO_INCREMENT:** A cada valor adicionado, o valor do campo primário é adicionado +1 automaticamente
 
+~~~sql
+    CREATE TABLE Canal (
+        CanalID INT PRIMARY KEY AUTO_INCREMENT,
+        Nome VARCHAR(150) NOT NULL,
+        ContagemInscritos INT DEFAULT 0,
+        DataCriacao DATETIME NOT NULL
+    );
 
+    CREATE TABLE Video (
+        VideoID INT PRIMARY KEY AUTO_INCREMENT,
+        Nome VARCHAR(150) NOT NULL,
+        Vizualizacoes INT DEFAULT 0,
+        Likes INT DEFAULT 0,
+        Deslikes INT DEFAULT 0,
+        Duracao  INT NOT NULL,
+        CanalID INT,
+        FOREIGN KEY (CanalID) REFERENCES Canal(CanalID)
+    );
+~~~
 
+## Insert Into
+* **Copiar dados de uma tabela para uma nova:**
+~~~sql
+    INSERT INTO Pessoas2 (Nome) SELECT Nome FROM Pessoas;
 
+~~~
+
+~~~sql
+    INSERT INTO Pessoas(Nome,Idade) VALUES ('Danilo',13);
+
+    INSERT INTO Casa(Nome,Endereco,PessoaID) VALUES ('Casa do Ednan', 'Rua do Maranhão', 13);
+~~~
+
+## Update
+
+~~~sql
+UPDATE Pessoas SET Nome = 'Nan' WHERE PessoaID = 1; WHERE CasaID = 1;
+UPDATE Casa SET Endereco = 'Rua Miguel Ruiz, 437' WHERE CasaID = 1;
+~~~
+
+## Delete
+* **Sempre usar o where, pois se não muito dados poderão ser excluídos!**
+
+~~~sql
+DELETE FROM Pessoas WHERE nome = 'Vera';
+~~~
+
+## Alter Table
+
+* *Exemplos de o que pode ser feito:*
+
+- Add, remover ou alterar uma coluna
+- Setar valores padrões para uma coluna
+- Add ou Remover restrições de colunas
+- Renomear uma tabela
+
+*Adicionar campo:*
+~~~sql
+    ALTER TABLE Youtube ADD Ativo BIT;
+~~~
+
+*Mudar campo:*
+~~~sql
+    ALTER TABLE Youtube MODIFY COLUMN Categoria VARCHAR(300) NOT NULL;
+~~~
+
+*Renomear coluna:* 
+~~~sql
+    ALTER TABLE Youtube CHANGE nome nomeDoCanal varchar(150) UNIQUE;
+~~~
+
+*Renomear tabela:*
+~~~sql
+    RENAME TABLE youtube TO Canal;
+~~~
+
+## Drop Table
+**(Deletar tabela)**
+
+~~~sql
+    DROP TABLE Pessoas;
+~~~
+
+## Truncate Table
+**(Remove todos os dados, mas mantém a tabela e sua arquitetura.)**
+
+~~~sql
+    TRUNCATE TABLE Pessoas;
+~~~
+
+## Check
+**(Checar Condições)**
+
+~~~sql
+    CREATE TABLE Voto (
+    ID INT PRIMARY KEY AUTO_INCREMENT,
+    Nome VARCHAR(100),
+    Idade INT CHECK (Idade >= 18);
+    );
+~~~
+
+## Not Null
+**(Não pode ser nulo)**
+
+~~~sql
+    CREATE TABLE Voto (
+    ID INT PRIMARY KEY AUTO_INCREMENT,
+    Nome VARCHAR(100) NOT NULL,
+    Idade INT NOT NULL;
+    );
+~~~
+
+## Unique
+**(Campo Único, não pode ser repetido.)**
+
+~~~sql
+    CREATE TABLE Voto (
+    ID INT PRIMARY KEY AUTO_INCREMENT,
+    Nome VARCHAR(100) UNIQUE,
+    Idade INT NOT NULL;
+    );
+~~~
+
+## Views
+**(São tipo uma tabela, só que você seleciona apenas as colunas que vc quer de outra tabela.)**
+
+~~~sql
+    CREATE VIEW Cidadaos AS SELECT Nome, Sobrenome FROM
+    Pessoas WHERE Título = 'Mr.';
+~~~
 
 
 
