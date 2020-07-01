@@ -1,5 +1,7 @@
 
 # Comandos MySQL 
+A
+![mysql](https://user-images.githubusercontent.com/62631162/86279807-fe1a5c00-bbb0-11ea-8e4d-a49c64371a0b.png)
 
 ## Criação e Exclusão do Banco
 
