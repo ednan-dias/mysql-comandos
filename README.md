@@ -1,5 +1,5 @@
 
-![mysql-comandos](https://user-images.githubusercontent.com/62631162/87854490-c7e71700-c8e8-11ea-98fe-e8f32b89db89.jpg)
+![mysql-comandos](https://user-images.githubusercontent.com/62631162/87855224-375f0580-c8ed-11ea-9a20-9c92b23379e6.jpg)
 
 ## Criação e Exclusão do Banco
 
